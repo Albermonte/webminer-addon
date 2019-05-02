@@ -18,7 +18,7 @@
     <div class="addon expanded" :style="{'top': y || 10}">
       <div class="notification">
         <ShortLogo class="shortnim-logo" @click="toggle"/>
-        <ShortnimInfo />
+        <ShortnimInfo :mobile="mobile"/>
       </div>
       <div @click="toggle" class="container close-btn">
         <NimClose class="nq-icon"/>

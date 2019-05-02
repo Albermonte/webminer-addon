@@ -17,8 +17,8 @@
       style="font-size: 10px; justify-content: center; color: var(--nimiq-blue) !important;"
     >Connecting and establishing consensus...</span>
     <div class="text">
-      <p v-html="info">
-      </p>
+      <p v-html="info"></p>
+      <p v-if="!mobile" class="nq-text-s"> If I'm bothering you, you can drag me</p>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@
 <script>
 export default {
   name: "ShortnimInfo",
+  props: ["mobile"],
   data() {
     return {
       info: "",
@@ -46,8 +47,7 @@ export default {
     if(typeof(NIMIQ_POOL_HOST) != "undefined") this.host = NIMIQ_POOL_HOST;
     if(typeof(NIMIQ_POOL_PORT) != "undefined") this.port = NIMIQ_POOL_PORT;
     if(typeof(NIMIQ_ADDRESS) != "undefined") this.address = NIMIQ_ADDRESS;
-    if(typeof(ADDON_INFO) == "undefined") var ADDON_INFO = "You are mining <a href=\"https://nimiq.com/\" target=\"_blank\" style=\"text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);\">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment."
-
+    if(typeof(ADDON_INFO) === "undefined") var ADDON_INFO = "You are mining <a href=\"https://nimiq.com/\" target=\"_blank\" style=\"text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);\">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment."
     this.PoolMiner.init(
       this.host,
       this.port,
@@ -211,7 +211,7 @@ export default {
   .shortnim_data {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 70px;
     transition: 0.3s all ease;
 
@@ -292,6 +292,9 @@ export default {
       }
     }
   }
+  .nq-text-s {
+    font-size: 9px !important;
+}
 }
 
 @media screen and (max-width: 310px) {
@@ -309,5 +312,11 @@ export default {
       }
     }
   }
+}
+
+.nq-text-s {
+    font-size: 12px !important;
+    font-weight: 100 !important;
+    margin-top: 5px !important;
 }
 </style>
