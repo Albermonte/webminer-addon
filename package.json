@@ -1,0 +1,50 @@
+{
+  "name": "webminer-addon",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-umd": "vue-cli-service build --target lib --name shortnim-addon --dest ./dist/umd ./src/main.js",
+    "build-help": "vue-cli-service build --help",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@nimiq/style": "^0.6.2",
+    "hmtsiu": "^1.0.1",
+    "prevent-pull-refresh": "^1.0.4",
+    "vue": "^2.6.10",
+    "vue-draggable-resizable": "^2.0.0-rc1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "vue-svg-loader": "^0.12.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "babel": {
+    "presets": [
+      "@vue/app"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
