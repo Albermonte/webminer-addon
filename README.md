@@ -1,4 +1,5 @@
 # Nimiq Web Miner
+[![](https://data.jsdelivr.com/v1/package/gh/Albermonte/webminer-addon/badge)](https://www.jsdelivr.com/package/gh/Albermonte/webminer-addon)
 
 Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use.
 
@@ -7,8 +8,8 @@ Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use
 Import the addon:
 
 ```html
+<script src="https://cdn.jsdelivr.net/gh/Albermonte/webminer-addon@latest/dist/js/addon.js"></script>
 ```
-
 
 Add the following `div` at the end of your html:
 
