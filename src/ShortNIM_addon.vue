@@ -73,7 +73,7 @@ export default {
       } else {
         addon.style.right = "-5px";
       }
-      shortnimLogo.style.transform = "scale(.8)";
+      shortnimLogo.style.transform = "scale(.65)";
       addon.style.transform = "scale(.6)";
     } else {
       this.is_closed = false;
