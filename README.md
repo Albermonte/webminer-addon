@@ -1,7 +1,9 @@
 # Nimiq Web Miner
 [![](https://data.jsdelivr.com/v1/package/gh/Albermonte/webminer-addon/badge)](https://www.jsdelivr.com/package/gh/Albermonte/webminer-addon)
 
-Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use.
+Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use. 
+
+Demo: https://webminer-addon.netlify.com
 
 ## Installation
 
