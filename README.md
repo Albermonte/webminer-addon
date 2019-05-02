@@ -5,10 +5,10 @@ Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use
 
 ## Installation
 
-Import the addon:
+Import the addon: (Important to use `defer` don't remove it)
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Albermonte/webminer-addon@latest/dist/js/addon.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Albermonte/webminer-addon@latest/dist/js/addon.js" defer></script>
 ```
 
 Add the following `div` at the end of your html:
@@ -23,7 +23,7 @@ Add the following `div` at the end of your html:
 Add and edit this variables:
 
 ```html
-<script>
+<script defer>
     let NIMIQ_ADDRESS = 'NQ87 UY1R XQHF E3A2 YP14 TPE6 XAGV 7373 HCJ6';
     let NIMIQ_POOL_HOST = 'pool.nimiq.watch';
     let NIMIQ_POOL_PORT = 8443;
@@ -39,7 +39,8 @@ Add and edit this variables:
 <html>
 
 <head>
-  <script>
+  <script src="https://cdn.jsdelivr.net/gh/Albermonte/webminer-addon@latest/dist/js/addon.js" defer></script>
+  <script defer>
     let NIMIQ_ADDRESS = 'NQ87 UY1R XQHF E3A2 YP14 TPE6 XAGV 7373 HCJ6';
     let NIMIQ_POOL_HOST = 'pool.nimiq.watch';
     let NIMIQ_POOL_PORT = 8443;
@@ -57,7 +58,6 @@ Add and edit this variables:
 </body>
 
 </html>
-
 ```
 
 ## Contributing
