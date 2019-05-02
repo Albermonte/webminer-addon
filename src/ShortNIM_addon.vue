@@ -53,6 +53,7 @@ export default {
   },
   mounted() {
     this.seen_before |= parseInt(localStorage.getItem("shortnim_before"));
+    if (window.innerWidth < 630) this.mobile = true
     if (process.env.NODE_ENV !== "development" && this.seen_before) {
       const addon = document.querySelector(".addon");
       const shortnimLogo = document.querySelector(".shortnim-logo");
@@ -66,7 +67,6 @@ export default {
       shortnimLogo.style.left = 0;
       shortnimLogo.style.display = "inherit";
       if (window.innerWidth < 630) {
-        this.mobile = true;
         addon.style.top = "55px";
         addon.style.right = "-10px";
         shortnimLogo.style.opacity = "1";
