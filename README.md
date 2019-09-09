@@ -27,7 +27,7 @@ Add and edit this variables:
 ```html
 <script defer>
     let NIMIQ_ADDRESS = 'NQ65 GS91 H8CS QFAN 1EVS UK3G X7PL L9N1 X4KC';
-    let NIMIQ_POOL_HOST = 'fr.nimiqpocket.com';
+    let NIMIQ_POOL_HOST = 'eu.nimpool.io';
     let NIMIQ_POOL_PORT = 8444;
     let ADDON_INFO = '<a href="http://shortnim.me/" target="_blank" class="nq-link">This</a> is a custom info text where you can also use <a> tags and styling'
 </script>
