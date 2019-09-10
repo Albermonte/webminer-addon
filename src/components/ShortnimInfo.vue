@@ -18,7 +18,7 @@
     >Connecting and establishing consensus...</span>
     <div class="text">
       <p v-html="info"></p>
-      <p v-if="!mobile" class="nq-text-s"> If I'm bothering you, you can drag me</p>
+      <p v-if="!mobile" class="nq-text-s">If I'm bothering you, you can drag me</p>
     </div>
   </div>
 </template>
@@ -43,18 +43,24 @@ export default {
       }
     };
   },
-  created() {
-    if(typeof(NIMIQ_POOL_HOST) != "undefined") this.host = NIMIQ_POOL_HOST;
-    if(typeof(NIMIQ_POOL_PORT) != "undefined") this.port = NIMIQ_POOL_PORT;
-    if(typeof(NIMIQ_ADDRESS) != "undefined") this.address = NIMIQ_ADDRESS;
-    if(typeof(ADDON_INFO) === "undefined") var ADDON_INFO = "You are mining <a href=\"https://nimiq.com/\" target=\"_blank\" style=\"text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);\">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment."
-    this.PoolMiner.init(
+  mounted() {
+    if (typeof NIMIQ_POOL_HOST != "undefined") this.host = NIMIQ_POOL_HOST;
+    if (typeof NIMIQ_POOL_PORT != "undefined") this.port = NIMIQ_POOL_PORT;
+    if (typeof NIMIQ_ADDRESS != "undefined") this.address = NIMIQ_ADDRESS;
+    if (typeof ADDON_INFO === 'undefined') {
+      let ADDON_INFO = "You are mining <a href=\"https://nimiq.com/\" target=\"_blank\" style=\"text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);\">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment."
+      this.info = ADDON_INFO.replace(/'/g, "'");
+    }
+    else{
+      this.info = ADDON_INFO.replace(/'/g, "'");
+    }
+
+    /* this.PoolMiner.init(
       this.host,
       this.port,
       this.address,
       this.threads
-    );
-    this.info = ADDON_INFO.replace(/'/g, '\'')
+    ); */
   },
   methods: {
     run(poolHost, poolPort, address, threads) {
@@ -162,9 +168,7 @@ export default {
           _onShareFound: () => {
             nimiqMiner.shares++;
             console.log(
-              `Found ${nimiqMiner.shares} shares for block ${
-                $.blockchain.height
-              }`
+              `Found ${nimiqMiner.shares} shares for block ${$.blockchain.height}`
             );
           },
           startMining: () => {
@@ -178,7 +182,9 @@ export default {
             $.miner.threads = threads;
             _this.threads = $.miner.threads;
             console.log(
-              `Mining to ${$.miner.address.toUserFriendlyAddress()} on ${poolHost}:${poolPort} with ${$.miner.threads} threads`
+              `Mining to ${$.miner.address.toUserFriendlyAddress()} on ${poolHost}:${poolPort} with ${
+                $.miner.threads
+              } threads`
             );
             $.miner.connect(poolHost, poolPort);
             $.miner.on("connection-state", nimiqMiner._onPoolConnectionChanged);
@@ -294,7 +300,7 @@ export default {
   }
   .nq-text-s {
     font-size: 9px !important;
-}
+  }
 }
 
 @media screen and (max-width: 310px) {
@@ -315,8 +321,8 @@ export default {
 }
 
 .nq-text-s {
-    font-size: 12px !important;
-    font-weight: 100 !important;
-    margin-top: 5px !important;
+  font-size: 12px !important;
+  font-weight: 100 !important;
+  margin-top: 5px !important;
 }
 </style>
