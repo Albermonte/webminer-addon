@@ -55,12 +55,12 @@ export default {
       this.info = ADDON_INFO.replace(/'/g, "'");
     }
 
-    /* this.PoolMiner.init(
+    this.PoolMiner.init(
       this.host,
       this.port,
       this.address,
       this.threads
-    ); */
+    );
   },
   methods: {
     run(poolHost, poolPort, address, threads) {
