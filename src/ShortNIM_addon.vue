@@ -11,11 +11,11 @@
     :h="70"
     drag-handle=".addon"
     :resizable="false"
-    :draggable="!mobile"
+    :draggable="!mobile && !bottom"
     axis="y"
-    :y="10"
+    y="10"
   >
-    <div class="addon expanded" :style="{'top': y || 10}">
+    <div class="addon expanded" :style="bottom ? `bottom: ${-y || 10}px` : `top: ${y || 10}px`">
       <div class="notification">
         <ShortLogo class="shortnim-logo" @click="toggle"/>
         <ShortnimInfo :mobile="mobile"/>
@@ -48,10 +48,17 @@ export default {
       seen_before: false,
       overflow: document.body.style.overflow,
       mobile: false,
-      y: 0
+      y: 0,
+      bottom: false
     };
   },
   mounted() {
+    if (typeof ADDON_BOTTOM === 'undefined') {
+      this.bottom = false
+    }
+    else{
+      this.bottom = ADDON_BOTTOM
+    }
     this.seen_before |= parseInt(localStorage.getItem("shortnim_before"));
     if (window.innerWidth < 630) this.mobile = true
     if (process.env.NODE_ENV !== "development" && this.seen_before) {

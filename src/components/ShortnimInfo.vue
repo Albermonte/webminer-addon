@@ -18,7 +18,7 @@
     >Connecting and establishing consensus...</span>
     <div class="text">
       <p v-html="info"></p>
-      <p v-if="!mobile" class="nq-text-s">If I'm bothering you, you can drag me</p>
+      <p v-if="!mobile && bottom" class="nq-text-s">If I'm bothering you, you can drag me</p>
     </div>
   </div>
 </template>
