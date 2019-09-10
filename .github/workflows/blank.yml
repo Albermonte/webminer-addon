@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: npm install, build
+      run: |
+        npm install
+        npm run build
+        npm run rename
