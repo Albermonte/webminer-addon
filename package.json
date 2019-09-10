@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-umd": "vue-cli-service build --target lib --name shortnim-addon --dest ./dist/umd ./src/main.js",
-    "build-help": "vue-cli-service build --help",
+    "rename": "mv ./dist/js/app.*.js ./dist/js/addon.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
