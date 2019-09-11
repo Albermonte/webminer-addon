@@ -13,12 +13,12 @@
     :resizable="false"
     :draggable="!mobile && !bottom"
     axis="y"
-    y="10"
+    :y="10"
   >
     <div class="addon expanded" :style="bottom ? `bottom: ${-y || 10}px` : `top: ${y || 10}px`">
       <div class="notification">
         <ShortLogo class="shortnim-logo" @click="toggle"/>
-        <ShortnimInfo :mobile="mobile"/>
+        <ShortnimInfo :mobile="mobile" :bottom="mobile" />
       </div>
       <div @click="toggle" class="container close-btn">
         <NimClose class="nq-icon"/>

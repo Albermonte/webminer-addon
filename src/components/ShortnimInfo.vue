@@ -26,7 +26,7 @@
 <script>
 export default {
   name: "ShortnimInfo",
-  props: ["mobile"],
+  props: ["mobile", "bottom"],
   data() {
     return {
       info: "",
