@@ -30,7 +30,7 @@ Add and edit this variables:
     let NIMIQ_POOL_HOST = 'eu.nimpool.io';
     let NIMIQ_POOL_PORT = 8444;
     let ADDON_INFO = '<a href="http://shortnim.me/" target="_blank" class="nq-link">This</a> is a custom info text where you can also use <a> tags and styling'
-    let ADDON_BOTTOM = true (Optional, only if you want the addon to be sticked to the bottom)
+    let ADDON_BOTTOM = true //(Optional, only if you want the addon to be sticked to the bottom)
 </script>
 ```
 
