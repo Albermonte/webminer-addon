@@ -3,7 +3,7 @@
 
 Webminer-addon is a Nimiq Web Miner with a pretty UI and easy to install and use. 
 
-Demo: https://webminer-addon.netlify.com
+Demo: https://webminer-addon.netlify.app/
 
 ## Installation
 
