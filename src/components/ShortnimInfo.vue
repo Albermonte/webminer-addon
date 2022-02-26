@@ -8,17 +8,24 @@
       </div>
       <div class="shortnim_row">
         <span>{{ threads }}</span>
-        <span>&nbsp;thread{{ threads === 1 ? '' : 's' }}</span>
+        <span>&nbsp;thread{{ threads === 1 ? "" : "s" }}</span>
       </div>
     </span>
     <span
       v-else
       class="shortnim_data"
-      style="font-size: 10px; justify-content: center; color: var(--nimiq-blue) !important;"
-    >Connecting and establishing consensus...</span>
+      style="
+        font-size: 10px;
+        justify-content: center;
+        color: var(--nimiq-blue) !important;
+      "
+      >Connecting and establishing consensus...</span
+    >
     <div class="text">
       <p v-html="info"></p>
-      <p v-if="!mobile && bottom" class="nq-text-s">If I'm bothering you, you can drag me</p>
+      <p v-if="!mobile && bottom" class="nq-text-s">
+        If I'm bothering you, you can drag me
+      </p>
     </div>
   </div>
 </template>
@@ -39,28 +46,27 @@ export default {
       consensus: false,
       PoolMiner: {
         init: (poolHost, poolPort, address, threads) =>
-          this.run(poolHost, poolPort, address, threads)
-      }
+          this.run(poolHost, poolPort, address, threads),
+      },
     };
   },
   mounted() {
     if (typeof NIMIQ_POOL_HOST != "undefined") this.host = NIMIQ_POOL_HOST;
     if (typeof NIMIQ_POOL_PORT != "undefined") this.port = NIMIQ_POOL_PORT;
     if (typeof NIMIQ_ADDRESS != "undefined") this.address = NIMIQ_ADDRESS;
-    if (typeof ADDON_INFO === 'undefined') {
-      let ADDON_INFO = "You are mining <a href=\"https://nimiq.com/\" target=\"_blank\" style=\"text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);\">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment."
-      this.info = ADDON_INFO.replace(/'/g, "'");
+    if (typeof MINER_THREADS != "undefined") {
+      const maxThreads = window.navigator.hardwareConcurrency - 1;
+      this.threads = Math.min(MINER_THREADS, maxThreads);
     }
-    else{
+    if (typeof ADDON_INFO === "undefined") {
+      let ADDON_INFO =
+        'You are mining <a href="https://nimiq.com/" target="_blank" style="text-decoration: none;font-weight: bold;color: var(--nimiq-light-blue);">Nimiq</a>, a blockchain technology inspired by Bitcoin but designed to run in your browser. It is a fast and easy means of payment.';
+      this.info = ADDON_INFO.replace(/'/g, "'");
+    } else {
       this.info = ADDON_INFO.replace(/'/g, "'");
     }
 
-    this.PoolMiner.init(
-      this.host,
-      this.port,
-      this.address,
-      this.threads
-    );
+    this.PoolMiner.init(this.host, this.port, this.address, this.threads);
   },
   methods: {
     run(poolHost, poolPort, address, threads) {
@@ -126,7 +132,7 @@ export default {
 
                 $.network.connect();
               },
-              code => {
+              (code) => {
                 switch (code) {
                   case Nimiq.ERR_WAIT:
                     alert("Error: Already open in another tab or window.");
@@ -146,7 +152,7 @@ export default {
             _this.consensus = true;
             nimiqMiner.startMining();
           },
-          _onHashrateChanged: rate => {
+          _onHashrateChanged: (rate) => {
             _this.hashrate = rate;
             console.log(`${rate} H/s`);
           },
@@ -155,7 +161,7 @@ export default {
           },
           _onPeersChanged: () =>
             console.log(`Now connected to ${$.network.peerCount} peers.`),
-          _onPoolConnectionChanged: state => {
+          _onPoolConnectionChanged: (state) => {
             if (state === Nimiq.BasePoolMiner.ConnectionState.CONNECTING)
               console.log("Connecting to the pool");
             if (state === Nimiq.BasePoolMiner.ConnectionState.CONNECTED) {
@@ -190,7 +196,7 @@ export default {
             $.miner.on("connection-state", nimiqMiner._onPoolConnectionChanged);
             $.miner.on("share", nimiqMiner._onShareFound);
             $.miner.on("hashrate-changed", nimiqMiner._onHashrateChanged);
-          }
+          },
         };
 
         if (typeof Nimiq === "undefined")
@@ -198,8 +204,8 @@ export default {
         console.log("Completed downloading Nimiq client from CDN.");
         nimiqMiner.init();
       })();
-    }
-  }
+    },
+  },
 };
 </script>
 

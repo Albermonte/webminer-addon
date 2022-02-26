@@ -15,13 +15,16 @@
     axis="y"
     :y="10"
   >
-    <div class="addon expanded" :style="bottom ? `bottom: ${-y || 10}px` : `top: ${y || 10}px`">
+    <div
+      class="addon expanded"
+      :style="bottom ? `bottom: ${-y || 10}px` : `top: ${y || 10}px`"
+    >
       <div class="notification">
-        <ShortLogo class="shortnim-logo" @click="toggle"/>
+        <ShortLogo class="shortnim-logo" @click="toggle" />
         <ShortnimInfo :mobile="mobile" :bottom="mobile" />
       </div>
       <div @click="toggle" class="container close-btn">
-        <NimClose class="nq-icon"/>
+        <NimClose class="nq-icon" />
       </div>
     </div>
   </vue-draggable-resizable>
@@ -39,7 +42,7 @@ export default {
   components: {
     NimClose,
     ShortLogo,
-    ShortnimInfo
+    ShortnimInfo,
   },
   data() {
     return {
@@ -49,18 +52,17 @@ export default {
       overflow: document.body.style.overflow,
       mobile: false,
       y: 0,
-      bottom: false
+      bottom: false,
     };
   },
   mounted() {
-    if (typeof ADDON_BOTTOM === 'undefined') {
-      this.bottom = false
-    }
-    else{
-      this.bottom = ADDON_BOTTOM
+    if (typeof ADDON_BOTTOM === "undefined") {
+      this.bottom = false;
+    } else {
+      this.bottom = ADDON_BOTTOM || false;
     }
     this.seen_before |= parseInt(localStorage.getItem("shortnim_before"));
-    if (window.innerWidth < 630) this.mobile = true
+    if (window.innerWidth < 630) this.mobile = true;
     if (process.env.NODE_ENV !== "development" && this.seen_before) {
       const addon = document.querySelector(".addon");
       const shortnimLogo = document.querySelector(".shortnim-logo");
@@ -92,10 +94,6 @@ export default {
       if (window.innerWidth < 630) return;
       this.y = y;
       this.prevent_open = true;
-      /*
-      Desactivado de momento porque queda feo hasta encontrar una solución para arrastrar en movil
-      document.body.style.overflow = "hidden";
-      */
     },
     onDragstop() {
       if (window.innerWidth < 630) return;
@@ -160,8 +158,8 @@ export default {
         }
         addon.style.transform = "scale(.6)";
       }, 700);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -171,7 +169,7 @@ html {
   .addon {
     position: fixed;
     --nimiq-lateral-margin: 10px;
-    right: 10px;
+    right: 4px !important;
     padding: 5px 15px;
     z-index: 100000;
     display: flex;
@@ -291,6 +289,7 @@ html {
 }
 
 .drag {
+  width: 100vw !important;
   transition: 0.1s top cubic-bezier(1, 0.9, 0.45, 1.15);
 }
 </style>

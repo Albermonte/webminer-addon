@@ -31,6 +31,7 @@ Add and edit this variables:
     let NIMIQ_POOL_PORT = 8444;
     let ADDON_INFO = '<a href="http://shortnim.me/" target="_blank" class="nq-link">This</a> is a custom info text where you can also use <a> tags and styling'
     let ADDON_BOTTOM = true //(Optional, only if you want the addon to be sticked to the bottom)
+    let MINER_THREADS = 8   //(Optional, only if you want the addon to mine using a fixed amount of threads. Max amount is the max available threads - 1 (Automatically detected))
 </script>
 ```
 
